@@ -1,0 +1,40 @@
+{
+	"manifest_version": 2,
+	"name": "网摘Plug",
+	"version": "1.0",
+	"description": "网摘插件：科学，考古，外星人",
+	"author": "sxei",
+	"icons":
+	{
+		"48": "icon.png",
+		"128": "icon.png"
+	},
+	"browser_action": 
+	{
+		"default_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": 
+	[
+		{
+			"matches": ["https://www.baidu.com/*"],
+			"js": ["content-script.js"]
+		}
+	],
+	"permissions":
+	[
+		"contextMenus",
+		"tabs", 
+		"notifications",
+		"webRequest", 
+		"webRequestBlocking",
+		"storage",
+		"http://*/*", 
+		"https://*/*" 
+	],
+	"options_page": "options.html",
+	"web_accessible_resources": 
+	[
+		"inject.js"
+	]
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<style>
+	body{font-size: 16px;width: 400px; height: 300px;padding: 10px;font-family: 'Microsoft Yahei'; }
+	#status {color:red;}
+	</style>
+	<title>网摘Plug配置</title>
+</head>
+<body>
+	<h1>网摘Plug配置</h1>
+	<div>
+		<div>method: post</div>
+		<div>data: { title: "标题", url: "地址" }</div>
+		<div>dataType: json</div>
+	</div>
+	<div>
+		<label>网摘服务地址：</label>
+		<br />
+		<input name="title" id="server_url"  style="width: 90%"/>
+		</form>
+	</div>
+	
+	<a href="javascript:;" id="save">保存配置</a>
+	<div id="status"></div>
+	<!-- <script type="text/javascript" src="js/jquery-1.8.3.js"></script> -->
+	<script src="js/options.js"></script>
+</body>
+</html>
