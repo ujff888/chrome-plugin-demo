@@ -112,16 +112,32 @@
 			("0" + m.getMinutes()).slice(-2) + ":" +
 			("0" + m.getSeconds()).slice(-2);
 
+		var row = {
+			title: title,
+			url: url,
+			ctime: dateString,
+			timestamp: m.getTime()
+		}
+
+		if (url.indexOf("youtube.com/watch") != -1) {
+			try {
+				var urlObj = new URL(url)
+				var params = new URLSearchParams(urlObj.search)
+				var watchId = params.get("v")
+				row["thrumb"] = [
+					`http://i3.ytimg.com/vi/${watchId}/hqdefault.jpg`,
+					`http://i3.ytimg.com/vi/${watchId}/maxresdefault.jpg`,
+				]
+			} catch (e) {
+
+			}
+		}
+
 		contents.get(filename, (res, exist) => {
 			try {
 				if (!exist) {
 					// 文件不存在
-					contents.put(filename, "", JSON.stringify([{
-						title: title,
-						url: url,
-						ctime: dateString,
-						timestamp: m.getTime()
-					}], null, 2))
+					contents.put(filename, "", JSON.stringify([row], null, 2))
 				} else {
 
 					// alert(JSON.stringify(res))
@@ -130,15 +146,10 @@
 					try {
 						content = Base64.decode(res.content)
 						data = JSON.parse(content)
-						if (!(data instanceof Array)){
+						if (!(data instanceof Array)) {
 							data = []
 						}
-						data.push({
-							title: title,
-							url: url,
-							ctime: dateString,
-							timestamp: m.getTime()
-						})
+						data.push(row)
 						contents.put(filename, sha, JSON.stringify(data, null, 2))
 					} catch (e) {
 						alert(e)
