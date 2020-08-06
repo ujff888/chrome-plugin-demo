@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
-	"name": "网摘Plug",
+	"name": "网摘Plugin",
 	"version": "1.0",
-	"description": "网摘插件：科学，考古，外星人",
+	"description": "基于github的网摘插件：科学，考古，外星人",
 	"author": "sxei",
 	"icons":
 	{
